@@ -1,0 +1,6 @@
+{
+  "appId": "com.alzahrawilab.patient",
+  "appName": "Al-Zahrawi Lab",
+  "webDir": "dist-patient",
+  "bundledWebRuntime": false
+}

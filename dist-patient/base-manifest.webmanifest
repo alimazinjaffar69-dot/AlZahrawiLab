@@ -1,0 +1,19 @@
+{
+  "name": "Base",
+  "short_name": "Base",
+  "description": "Private owner app for Al-Zahrawi clinic appointments.",
+  "start_url": "/base",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F0F4F8",
+  "theme_color": "#12314F",
+  "icons": [
+    {
+      "src": "/base-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

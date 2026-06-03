@@ -1,0 +1,19 @@
+{
+  "name": "Al-Zahrawi Lab",
+  "short_name": "Al-Zahrawi",
+  "description": "Patient sign-in, booking, reports, and laboratory information for Al-Zahrawi Laboratory.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F0F4F8",
+  "theme_color": "#1B5C8A",
+  "icons": [
+    {
+      "src": "/patient-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

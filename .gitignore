@@ -1,0 +1,23 @@
+# Node
+node_modules/
+
+# Android
+.gradle/
+build/
+android/build/
+android-patient/app/build/
+android-base/app/build/
+
+# IDE
+.idea/
+*.iml
+
+# APKs
+*.apk
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

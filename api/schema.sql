@@ -1,0 +1,62 @@
+CREATE DATABASE IF NOT EXISTS alzahrawi_lab
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE alzahrawi_lab;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  phone VARCHAR(32) NOT NULL UNIQUE,
+  name VARCHAR(120) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS sessions (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  token CHAR(64) NOT NULL UNIQUE,
+  expires_at DATETIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_sessions_user
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS bookings (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  patient_name VARCHAR(120) NOT NULL,
+  sickness VARCHAR(255) NOT NULL,
+  phone VARCHAR(32) NOT NULL,
+  visit_date DATE NOT NULL,
+  visit_time TIME NOT NULL,
+  status VARCHAR(60) NOT NULL DEFAULT 'Hasn''t arrived yet',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_bookings_visit (visit_date, visit_time),
+  INDEX idx_bookings_phone (phone),
+  CONSTRAINT fk_bookings_user
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS results (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  booking_id INT UNSIGNED NULL,
+  user_id INT UNSIGNED NOT NULL,
+  patient_name VARCHAR(120) NOT NULL,
+  phone VARCHAR(32) NOT NULL,
+  test_name VARCHAR(160) NOT NULL,
+  department VARCHAR(120) NOT NULL,
+  pdf_original_name VARCHAR(255) NOT NULL,
+  pdf_file_name VARCHAR(255) NOT NULL,
+  uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_results_phone (phone),
+  CONSTRAINT fk_results_booking
+    FOREIGN KEY (booking_id) REFERENCES bookings(id)
+    ON DELETE SET NULL,
+  CONSTRAINT fk_results_user
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
