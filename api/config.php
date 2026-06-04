@@ -11,7 +11,7 @@ const UPLOAD_DIR = __DIR__ . '/uploads/results';
 const MAX_PDF_BYTES = 10485760; // 10 MB
 
 // Change this before using Base outside your computer.
-const BASE_API_KEY = 'change-this-base-secret-key';
+const BASE_API_KEY = 'Base-2026';
 
 const ALLOWED_ORIGINS = [
     'http://localhost:5173',
