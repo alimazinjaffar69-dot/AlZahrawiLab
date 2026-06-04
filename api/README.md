@@ -40,4 +40,4 @@ Patient requests use:
 
 Base app requests use:
 
-`X-Base-Key: change-this-base-secret-key`
+`X-Base-Key: Base-2026`
