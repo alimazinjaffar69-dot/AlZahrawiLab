@@ -4,7 +4,7 @@ declare(strict_types=1);
 const DB_HOST = '127.0.0.1';
 const DB_NAME = 'alzahrawi_lab';
 const DB_USER = 'root';
-const DB_PASS = '';
+const DB_PASS = 'MazinHillahZahrawi1973';
 
 const APP_TIMEZONE = 'Asia/Baghdad';
 const UPLOAD_DIR = __DIR__ . '/uploads/results';
